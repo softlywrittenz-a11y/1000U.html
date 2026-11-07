@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Wishes for Ekal ✨🤍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fef6f0, #fce4ec, #f8bbd0);
+            overflow: hidden;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #emojiCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 90%;
+            max-width: 480px;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .slide-badge {
+            display: inline-block;
+            background: #fce4ec;
+            color: #d81b60;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+        }
+
+        .message-box {
+            border: 2px dashed #f8bbd0;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 20px;
+            color: #555555;
+            font-size: 14px;
+            line-height: 1.7;
+            background: #fff9fb;
+            height: 160px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .btn-next {
+            background-color: #8d6e63;
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 12px rgba(141, 110, 99, 0.3);
+        }
+
+        .btn-next:hover {
+            background-color: #6d4c41;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="emojiCanvas"></canvas>
+
+    <div class="card">
+        <div class="slide-badge" id="badge">KALIMAT 1 DARI 1000 🤍</div>
+        <div class="card-title">✨ Special Message for Ekal ✨</div>
+        <div class="message-box" id="messageBox"></div>
+        <button class="btn-next" onclick="nextMessage()">Lanjut Baca &rarr;</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('emojiCanvas');
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const emojis = ['✨', '🤍', '🌿', '⭐', '💫'];
+        const rainElements = Array.from({ length: 30 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            speed: Math.random() * 1.5 + 0.5,
+            size: Math.random() * 16 + 12,
+            char: emojis[Math.floor(Math.random() * emojis.length)]
+        }));
+
+        function animateRain() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            rainElements.forEach(item => {
+                ctx.font = `${item.size}px sans-serif`;
+                ctx.fillText(item.char, item.x, item.y);
+                item.y += item.speed;
+                if (item.y > canvas.height + 20) {
+                    item.y = -20;
+                    item.x = Math.random() * canvas.width;
+                }
+            });
+            requestAnimationFrame(animateRain);
+        }
+        animateRain();
+
+        // 1000 BARIS KALIMAT KHUSUS BUAT EKAL
+        const messages = [
+            '1. Makasih ya Ekal udah selalu hadir dan bikin hari-hariku jadi jauh lebih hangat dan bermakna! 🤍',
+            '2. Dalam setiap waktu yang kita lewati bersama, selalu ada rasa nyaman yang nggak bisa diganti sama apa pun.',
+            '3. Kamu itu sosok paling spesial buat aku, Ekal. Aku selalu bersyukur bisa kenal dan dekat sama kamu.',
+            '4. Walaupun kadang ada hal-hal kecil yang bikin pusing, ingat selalu kalau ada aku di sini buat kamu.',
+            '5. Tetap jaga kesehatan dan jangan suka begadang terus ya, Ekal.',
+            '6. Terima kasih sudah jadi tempat pulang paling nyaman buat aku.',
+            '7. Semoga semua doa, harapan, dan impian yang lagi kamu pengenin bisa segera terwujud satu per satu.',
+            '8. Senyumanmu itu selalu punya cara buat bikin suasana hatiku langsung tenang lagi.',
+            '9. Nggak ada hal di dunia ini yang lebih membahagiakan selain tahu kamu baik-baik aja, Ekal.',
+            '10. Semangat terus ya kesayanganku Ekal, jalani hari ini dengan penuh senyuman! 🤍✨',
+            '11. Kalau lagi ngerasa penat sama keadaan, pelan-pelan aja ya, jangan diporsir.',
+            '12. Kamu adalah alasan utama kenapa aku selalu ngerasa beruntung setiap hari.',
+            '13. Kehadiranmu bener-bener bawa banyak warna baru di hidupku, Ekal.',
+            '14. Ingat buat luangkan waktu buat istirahat yang cukup, kesehatanmu nomor satu.',
+            '15. Tetap jadi diri sendiri yang baik hati, manis, dan selalu bikin aku kagum.',
+            '16. Setiap kali kamu ngerasa berat, ingat kalau kamu selalu bisa cerita apa aja ke aku.',
+            '17. Kebahagiaanmu itu penting banget buat aku, jadi tolong jaga diri baik-baik ya, Ekal.',
+            '18. Makin hari rasanya makin sayang dan bersyukur punya kamu di sisi aku.',
+            '19. Semoga hal-hal baik dan kebahagiaan selalu meliputimu ke mana pun kamu melangkah.',
+            '20. Tetap jadi kesayanganku yang hebat dan luar biasa, Ekal! 🤍',
+            '21. Makasih udah mau sabar dan terus nemenin aku dalam kondisi apa pun.',
+            '22. Apapun yang terjadi hari ini, kamu udah hebat banget dan aku bangga sama kamu, Ekal.',
+            '23. Jangan biarkan rasa ragu bikin kamu down, kamu jauh lebih kuat dari yang kamu tahu.',
+            '24. Selalu ada pelukan hangat dan doa tulus yang ngiringin setiap langkahmu.',
+            '25. Tetap jadi pribadi hangat yang selalu bisa bikin aku tersenyum.',
+            '26. Kalau dunia lagi nggak berpihak ke kamu, ingat ada aku yang selalu dukung kamu sepenuhnya.',
+            '27. Jangan lupa makan tepat waktu ya, Ekal.',
+            '28. Setiap detik bareng kamu itu berharga banget dan selalu aku inget.',
+            '29. Kamu punya hati yang tulus dan itu salah satu hal yang paling aku kagumi dari kamu.',
+            '30. Semoga harimu menyenangkan, penuh cinta, dan dijauhi dari hal yang bikin stres, Ekal! ✨'
+        ];
+
+        // Generator kalimat romantis khusus Ekal sampai 1000 baris
+        for (let i = 31; i <= 1000; i++) {
+            messages.push(`${i}. Semangat terus ya Ekal kesayanganku! Ingat kalau kamu itu sangat berharga, hebat, dan aku bakal selalu ada buat nemenin kamu dalam kondisi apa pun. I'm so lucky to have you! 🤍✨`);
+        }
+
+        let currentIndex = 0;
+        const messageBox = document.getElementById('messageBox');
+        const badge = document.getElementById('badge');
+
+        function updateDisplay() {
+            badge.innerText = `KALIMAT ${currentIndex + 1} DARI 1000 🤍`;
+            messageBox.innerHTML = messages[currentIndex];
+            messageBox.scrollTop = 0;
+        }
+
+        function nextMessage() {
+            currentIndex = (currentIndex + 1) % 1000;
+            updateDisplay();
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>
